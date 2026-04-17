@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Indian Marriage Biodata</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lora', 'Georgia', serif;
+    background: #f5f0e8;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .biodata-page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #FFF8EC;
+    position: relative;
+    padding: 28px 32px 24px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  /* === TRIPLE DECORATIVE BORDER === */
+  .biodata-page::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 3px solid #800020;
+    border-radius: 10px;
+    pointer-events: none;
+  }
+  .biodata-page::after {
+    content: '';
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1.5px solid #C5961A;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+  .inner-border {
+    position: absolute;
+    top: 18px; left: 18px; right: 18px; bottom: 18px;
+    border: 0.5px dotted #800020;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  /* === CORNER ORNAMENTS === */
+  .corner {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    color: #C5961A;
+    font-size: 36px;
+    line-height: 1;
+  }
+  .corner-tl { top: 14px; left: 16px; }
+  .corner-tr { top: 14px; right: 16px; transform: scaleX(-1); }
+  .corner-bl { bottom: 14px; left: 16px; transform: scaleY(-1); }
+  .corner-br { bottom: 14px; right: 16px; transform: scale(-1,-1); }
+
+  /* === HEADER AREA === */
+  .header-row {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-left {
+    flex: 1;
+    text-align: center;
+    padding-right: 10px;
+  }
+
+  /* Small Ganesha */
+  .ganesha-icon {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #C5961A;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F5E6C8, #FFF8EC);
+    margin-bottom: 2px;
+    font-size: 22px;
+    color: #800020;
+    font-weight: bold;
+    /* Replace content with a Ganesha image:
+       background-image: url('ganesha.png');
+       background-size: cover; */
+  }
+
+  .invocation {
+    font-size: 11px;
+    color: #800020;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .biodata-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #800020;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .name-line {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #800020;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 8px;
+    margin-top: 4px;
+  }
+
+  .quote-line {
+    font-size: 10.5px;
+    color: #A0522D;
+    font-style: italic;
+    text-align: left;
+    padding-left: 8px;
+    margin-top: 3px;
+  }
+
+  /* Photo frame (top-right) */
+  .photo-frame {
+    width: 110px;
+    min-width: 110px;
+    height: 135px;
+    border: 2.5px solid #800020;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF8EC;
+    flex-shrink: 0;
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    border: 1px solid #C5961A;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .photo-placeholder {
+    font-size: 12px;
+    color: #800020;
+    opacity: 0.5;
+    text-align: center;
+    font-weight: bold;
+  }
+  .photo-placeholder small {
+    display: block;
+    font-size: 9px;
+    font-weight: normal;
+    margin-top: 3px;
+    color: #A0522D;
+    opacity: 0.6;
+  }
+
+  /* === DECORATIVE DIVIDER === */
+  .divider {
+    text-align: center;
+    margin: 4px 0;
+    color: #C5961A;
+    font-size: 11px;
+    letter-spacing: 6px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    display: inline-block;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C5961A, transparent);
+    vertical-align: middle;
+    margin: 0 8px;
+  }
+
+  /* === SECTION HEADER === */
+  .section-header {
+    background: linear-gradient(135deg, #800020, #6b001a);
+    color: #F5E6C8;
+    padding: 5px 14px;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  .section-header::before {
+    content: '\25C6';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #C5961A;
+    font-size: 7px;
+  }
+  .section-header::after {
+    content: '\25C6';
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #C5961A;
+    font-size: 7px;
+  }
+
+  /* === FIELD TABLE === */
+  .fields-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2px;
+  }
+  .fields-table td {
+    padding: 2.5px 4px;
+    font-size: 10.5px;
+    vertical-align: top;
+    line-height: 1.4;
+  }
+  .field-label {
+    font-weight: 700;
+    color: #800020;
+    white-space: nowrap;
+    width: 22%;
+  }
+  .field-colon {
+    color: #C5961A;
+    font-weight: bold;
+    width: 8px;
+    text-align: center;
+  }
+  .field-value {
+    color: #3B1F0B;
+  }
+  /* For two-column layout */
+  .fields-table .gap-col {
+    width: 10px;
+  }
+  .field-label2 {
+    font-weight: 700;
+    color: #800020;
+    white-space: nowrap;
+    width: 22%;
+  }
+
+  /* Full-width field */
+  .field-value-full {
+    color: #3B1F0B;
+  }
+
+  /* === HOBBIES GRID === */
+  .hobbies-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2px 8px;
+    padding: 3px 8px;
+    font-size: 10.5px;
+    color: #3B1F0B;
+  }
+  .hobby-item::before {
+    content: '\25C7 ';
+    color: #C5961A;
+    font-size: 9px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    margin-top: 8px;
+    padding-top: 4px;
+  }
+  .footer-blessing {
+    font-size: 13px;
+    color: #800020;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .footer-text {
+    font-size: 10px;
+    color: #A0522D;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .footer-shubh {
+    font-size: 10px;
+    color: #C5961A;
+    margin-top: 3px;
+    letter-spacing: 2px;
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: none; padding: 0; }
+    .biodata-page {
+      box-shadow: none;
+      width: 100%;
+      min-height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="biodata-page">
+  <!-- Inner dotted border -->
+  <div class="inner-border"></div>
+
+  <!-- Corner ornaments -->
+  <div class="corner corner-tl">&#10048;</div>
+  <div class="corner corner-tr">&#10048;</div>
+  <div class="corner corner-bl">&#10048;</div>
+  <div class="corner corner-br">&#10048;</div>
+
+  <!-- ======== HEADER ROW: Ganesha + Title + Photo ======== -->
+  <div class="header-row">
+    <div class="header-left">
+      <!-- Small Ganesha icon -->
+      <div class="ganesha-icon">
+        <!-- Replace with <img src="ganesha.png" width="36" height="36"> -->
+        &#x0950;
+      </div>
+      <div class="invocation">|| Shri Ganeshaya Namah ||</div>
+      <div class="biodata-title">&mdash; Biodata for Marriage &mdash;</div>
+      <div class="name-line">Himanshu Goyal</div>
+      <div class="quote-line">"Dharmo Rakshati Rakshitah" &mdash; Dharma protects those who protect it.</div>
+    </div>
+
+    <!-- Photo top-right -->
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        Your Photo
+        <small>Passport size</small>
+        <!-- Replace with: <img src="photo.jpg" width="100" height="125"> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">&#9672;</div>
+
+  <!-- ======== PERSONAL INFORMATION ======== -->
+  <div class="section-header">Personal Information</div>
+  <table class="fields-table">
+    <tr>
+      <td class="field-label">Full Name</td><td class="field-colon">:</td>
+      <td class="field-value">Himanshu Goyal</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Date of Birth</td><td class="field-colon">:</td>
+      <td class="field-value">10 August 1995 (Age: 30)</td>
+    </tr>
+    <tr>
+      <td class="field-label">Time of Birth</td><td class="field-colon">:</td>
+      <td class="field-value">05:00 PM</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Place of Birth</td><td class="field-colon">:</td>
+      <td class="field-value">Meerut, Uttar Pradesh, India</td>
+    </tr>
+    <tr>
+      <td class="field-label">Height</td><td class="field-colon">:</td>
+      <td class="field-value">5' 7'' (170 cm)</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Weight</td><td class="field-colon">:</td>
+      <td class="field-value">XX kg</td>
+    </tr>
+    <tr>
+      <td class="field-label">Complexion</td><td class="field-colon">:</td>
+      <td class="field-value">Fair / Wheatish / Medium</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Blood Group</td><td class="field-colon">:</td>
+      <td class="field-value">A+ / B+ / O+ / AB+</td>
+    </tr>
+    <tr>
+      <td class="field-label">Marital Status</td><td class="field-colon">:</td>
+      <td class="field-value">Never Married</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Religion</td><td class="field-colon">:</td>
+      <td class="field-value">Hindu</td>
+    </tr>
+    <tr>
+      <td class="field-label">Caste</td><td class="field-colon">:</td>
+      <td class="field-value">Baniya</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Sub-Caste</td><td class="field-colon">:</td>
+      <td class="field-value">Your Sub-Caste</td>
+    </tr>
+    <tr>
+      <td class="field-label">Gotra</td><td class="field-colon">:</td>
+      <td class="field-value">Your Gotra</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Mother Tongue</td><td class="field-colon">:</td>
+      <td class="field-value">Hindi</td>
+    </tr>
+    <tr>
+      <td class="field-label">Languages Known</td><td class="field-colon">:</td>
+      <td class="field-value">Hindi, English</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Diet</td><td class="field-colon">:</td>
+      <td class="field-value">Eggetarian</td>
+    </tr>
+    <tr>
+      <td class="field-label">Smoke / Drink</td><td class="field-colon">:</td>
+      <td class="field-value">No / Occasionally</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Nationality</td><td class="field-colon">:</td>
+      <td class="field-value">Indian</td>
+    </tr>
+  </table>
+
+  <!-- ======== HOROSCOPE DETAILS ======== -->
+  <div class="section-header">Horoscope Details</div>
+  <table class="fields-table">
+    <tr>
+      <td class="field-label">Rashi (Moon Sign)</td><td class="field-colon">:</td>
+      <td class="field-value">Mesh / Vrishabh / etc.</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Nakshatra</td><td class="field-colon">:</td>
+      <td class="field-value">Ashwini / Bharani / etc.</td>
+    </tr>
+    <tr>
+      <td class="field-label">Charan (Pada)</td><td class="field-colon">:</td>
+      <td class="field-value">1st / 2nd / 3rd / 4th</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Manglik Status</td><td class="field-colon">:</td>
+      <td class="field-value">Manglik / Non-Manglik</td>
+    </tr>
+    <tr>
+      <td class="field-label">Gan</td><td class="field-colon">:</td>
+      <td class="field-value">Dev / Manushya / Rakshas</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Nadi</td><td class="field-colon">:</td>
+      <td class="field-value">Adi / Madhya / Antya</td>
+    </tr>
+  </table>
+
+  <!-- ======== EDUCATIONAL QUALIFICATION ======== -->
+  <div class="section-header">Educational Qualification</div>
+  <table class="fields-table">
+    <tr>
+      <td class="field-label">Highest Degree</td><td class="field-colon">:</td>
+      <td class="field-value">M.Tech / M.E.</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Specialization</td><td class="field-colon">:</td>
+      <td class="field-value">Computer Science / Engineering</td>
+    </tr>
+    <tr>
+      <td class="field-label">University</td><td class="field-colon">:</td>
+      <td class="field-value">University of Chicago</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Year of Passing</td><td class="field-colon">:</td>
+      <td class="field-value">YYYY</td>
+    </tr>
+    <tr>
+      <td class="field-label">Additional Qualif.</td><td class="field-colon">:</td>
+      <td class="field-value" colspan="4">Diploma, certification, or additional degree (if any)</td>
+    </tr>
+  </table>
+
+  <!-- ======== PROFESSIONAL DETAILS ======== -->
+  <div class="section-header">Professional Details</div>
+  <table class="fields-table">
+    <tr>
+      <td class="field-label">Occupation</td><td class="field-colon">:</td>
+      <td class="field-value">Machine Learning Engineer</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Company</td><td class="field-colon">:</td>
+      <td class="field-value">Meta (Facebook)</td>
+    </tr>
+    <tr>
+      <td class="field-label">Designation</td><td class="field-colon">:</td>
+      <td class="field-value">Machine Learning Engineer</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Sector</td><td class="field-colon">:</td>
+      <td class="field-value">Private / MNC</td>
+    </tr>
+    <tr>
+      <td class="field-label">Work Location</td><td class="field-colon">:</td>
+      <td class="field-value">Mountain View, California, USA</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Annual Income</td><td class="field-colon">:</td>
+      <td class="field-value">$300K&ndash;500K USD</td>
+    </tr>
+    <tr>
+      <td class="field-label">Work Experience</td><td class="field-colon">:</td>
+      <td class="field-value" colspan="4">X years in the field</td>
+    </tr>
+  </table>
+
+  <!-- ======== FAMILY DETAILS ======== -->
+  <div class="section-header">Family Details</div>
+  <table class="fields-table">
+    <tr>
+      <td class="field-label">Father's Name</td><td class="field-colon">:</td>
+      <td class="field-value">Shri Dharmendra Goyal</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Father's Occupation</td><td class="field-colon">:</td>
+      <td class="field-value">Businessman</td>
+    </tr>
+    <tr>
+      <td class="field-label">Mother's Name</td><td class="field-colon">:</td>
+      <td class="field-value">Smt. Savita Goyal</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Mother's Occupation</td><td class="field-colon">:</td>
+      <td class="field-value">Teacher</td>
+    </tr>
+    <tr>
+      <td class="field-label">Grandfather</td><td class="field-colon">:</td>
+      <td class="field-value">Late/Shri Full Name</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Grandmother</td><td class="field-colon">:</td>
+      <td class="field-value">Late/Smt. Full Name</td>
+    </tr>
+    <tr>
+      <td class="field-label">Brother(s)</td><td class="field-colon">:</td>
+      <td class="field-value">X Elder, X Younger</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Sister(s)</td><td class="field-colon">:</td>
+      <td class="field-value">X Elder, X Younger</td>
+    </tr>
+    <tr>
+      <td class="field-label">Mama's Name</td><td class="field-colon">:</td>
+      <td class="field-value">Shri Full Name, City</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Family Type</td><td class="field-colon">:</td>
+      <td class="field-value">Joint / Nuclear Family</td>
+    </tr>
+    <tr>
+      <td class="field-label">Family Status</td><td class="field-colon">:</td>
+      <td class="field-value">Middle / Upper Middle</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Family Values</td><td class="field-colon">:</td>
+      <td class="field-value">Traditional / Moderate</td>
+    </tr>
+    <tr>
+      <td class="field-label">Native Place</td><td class="field-colon">:</td>
+      <td class="field-value">City, District, State</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Property</td><td class="field-colon">:</td>
+      <td class="field-value">Own House / Flat / Land</td>
+    </tr>
+    <tr>
+      <td class="field-label">Residential Address</td><td class="field-colon">:</td>
+      <td class="field-value" colspan="4">House No., Street, Area, City, State &mdash; PIN Code</td>
+    </tr>
+  </table>
+
+  <!-- ======== HOBBIES & INTERESTS ======== -->
+  <div class="section-header">Hobbies &amp; Interests</div>
+  <div class="hobbies-grid">
+    <div class="hobby-item">Reading</div>
+    <div class="hobby-item">Cooking</div>
+    <div class="hobby-item">Traveling</div>
+    <div class="hobby-item">Music</div>
+    <div class="hobby-item">Yoga / Fitness</div>
+    <div class="hobby-item">Photography</div>
+    <div class="hobby-item">Painting</div>
+    <div class="hobby-item">Sports</div>
+    <div class="hobby-item">Gardening</div>
+    <div class="hobby-item">Movies</div>
+    <div class="hobby-item">Spirituality</div>
+    <div class="hobby-item">Social Work</div>
+  </div>
+
+  <!-- ======== PARTNER PREFERENCES ======== -->
+  <div class="section-header">Partner Preferences (Expectations)</div>
+  <table class="fields-table">
+    <tr>
+      <td class="field-label">Preferred Age</td><td class="field-colon">:</td>
+      <td class="field-value">XX to XX years</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Preferred Height</td><td class="field-colon">:</td>
+      <td class="field-value">X'X'' to X'X''</td>
+    </tr>
+    <tr>
+      <td class="field-label">Education</td><td class="field-colon">:</td>
+      <td class="field-value">Minimum qualification</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Occupation</td><td class="field-colon">:</td>
+      <td class="field-value">Preferred or "Any"</td>
+    </tr>
+    <tr>
+      <td class="field-label">Caste Preference</td><td class="field-colon">:</td>
+      <td class="field-value">Same / Caste No Bar</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Manglik Pref.</td><td class="field-colon">:</td>
+      <td class="field-value">Matching / No pref.</td>
+    </tr>
+    <tr>
+      <td class="field-label">Location</td><td class="field-colon">:</td>
+      <td class="field-value">Same city / Anywhere</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Family Background</td><td class="field-colon">:</td>
+      <td class="field-value">Expected values / type</td>
+    </tr>
+    <tr>
+      <td class="field-label">Other Expectations</td><td class="field-colon">:</td>
+      <td class="field-value" colspan="4">Brief description of what you are looking for in a life partner</td>
+    </tr>
+  </table>
+
+  <div class="divider">&#9672;</div>
+
+  <!-- ======== CONTACT INFORMATION ======== -->
+  <div class="section-header">Contact Information</div>
+  <table class="fields-table">
+    <tr>
+      <td class="field-label">Contact Person</td><td class="field-colon">:</td>
+      <td class="field-value">Himanshu Goyal</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Relationship</td><td class="field-colon">:</td>
+      <td class="field-value">Self</td>
+    </tr>
+    <tr>
+      <td class="field-label">Mobile Number</td><td class="field-colon">:</td>
+      <td class="field-value">+1 8826939156</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Alternate No.</td><td class="field-colon">:</td>
+      <td class="field-value">+1 XXXXX XXXXX</td>
+    </tr>
+    <tr>
+      <td class="field-label">WhatsApp</td><td class="field-colon">:</td>
+      <td class="field-value">+1 8826939156</td>
+      <td class="gap-col"></td>
+      <td class="field-label2">Email</td><td class="field-colon">:</td>
+      <td class="field-value">goyalhimanshu414@gmail.com</td>
+    </tr>
+    <tr>
+      <td class="field-label">Residential Address</td><td class="field-colon">:</td>
+      <td class="field-value" colspan="4">643 18th Avenue, Menlo Park, CA, USA</td>
+    </tr>
+  </table>
+
+  <!-- ======== FOOTER ======== -->
+  <div class="footer">
+    <div class="divider">&#9733;</div>
+    <div class="footer-blessing">|| Shri Shubh Vivah ||</div>
+    <div class="footer-text">May Lord Ganesha bless this sacred union with eternal happiness and prosperity.</div>
+    <div class="footer-shubh">~ Shubh Mangal ~</div>
+    <div class="divider">&#9733;</div>
+  </div>
+</div>
+
+</body>
+</html>
