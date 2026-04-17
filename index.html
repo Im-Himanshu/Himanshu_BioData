@@ -73,7 +73,7 @@
   .header-row {
     display: flex;
     align-items: flex-start;
-    margin-top: 8px;
+    margin-top: 2px;
     margin-bottom: 4px;
     position: relative;
     z-index: 1;
@@ -143,8 +143,6 @@
 
   /* Photo frame (top-right) */
   .photo-frame {
-    width: 110px;
-    min-width: 110px;
     height: 135px;
     border: 2.5px solid #800020;
     border-radius: 5px;
@@ -166,9 +164,9 @@
   .photo-placeholder {
     font-size: 12px;
     color: #800020;
-    opacity: 0.5;
     text-align: center;
     font-weight: bold;
+    height: 100%;
   }
   .photo-placeholder small {
     display: block;
@@ -231,46 +229,34 @@
     font-size: 7px;
   }
 
-  /* === FIELD TABLE === */
-  .fields-table {
-    width: 100%;
-    border-collapse: collapse;
+  /* === FIELD GRID (flex-wrap, each field independent) === */
+  .fields-grid {
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 2px;
   }
-  .fields-table td {
+  .field-item {
+    width: 50%;
     padding: 2.5px 4px;
     font-size: 10.5px;
-    vertical-align: top;
     line-height: 1.4;
+    display: flex;
   }
-  .field-label {
+  .field-item.full {
+    width: 100%;
+  }
+  .field-item .fl {
     font-weight: 700;
     color: #800020;
     white-space: nowrap;
-    width: 22%;
+    min-width: 120px;
   }
-  .field-colon {
+  .field-item .fc {
     color: #C5961A;
     font-weight: bold;
-    width: 8px;
-    text-align: center;
+    margin: 0 4px;
   }
-  .field-value {
-    color: #3B1F0B;
-  }
-  /* For two-column layout */
-  .fields-table .gap-col {
-    width: 10px;
-  }
-  .field-label2 {
-    font-weight: 700;
-    color: #800020;
-    white-space: nowrap;
-    width: 22%;
-  }
-
-  /* Full-width field */
-  .field-value-full {
+  .field-item .fv {
     color: #3B1F0B;
   }
 
@@ -321,7 +307,28 @@
       box-shadow: none;
       width: 100%;
       min-height: auto;
+      padding: 16px 22px 12px 22px;
     }
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .section-header {
+      margin-top: 4px;
+      margin-bottom: 3px;
+      padding: 3px 14px;
+      font-size: 11px;
+    }
+    .field-item {
+      padding: 1.5px 4px;
+      font-size: 9.5px;
+    }
+    .divider { margin: 2px 0; }
+    .hobbies-grid { font-size: 9.5px; padding: 2px 8px; }
+    .footer { margin-top: 4px; padding-top: 2px; }
+    .name-line { font-size: 16px; }
+    .quote-line { font-size: 10px; }
+    .invocation { font-size: 10px; }
   }
 </style>
 </head>
@@ -337,99 +344,59 @@
   <div class="corner corner-bl">&#10048;</div>
   <div class="corner corner-br">&#10048;</div>
 
-  <!-- ======== HEADER ROW: Ganesha + Title + Photo ======== -->
-  <div class="header-row">
-    <div class="header-left">
-      <!-- Small Ganesha icon -->
+  <!-- ======== HEADER SECTION ======== -->
+  <div style="position: relative; z-index: 1; margin-top: 2px; margin-bottom: 4px;">
+
+    <!-- 1. Ganesha: centered on page -->
+    <div style="text-align: center; margin-bottom: 6px;">
       <div class="ganesha-icon">
-         <img src="ganesha.png" width="36" height="36"> 
-        <!--&#x0950;-->
+         <img src="ganesha.png" width="36" height="36">
       </div>
       <div class="invocation">|| Shri Ganeshaya Namah ||</div>
-      <!--<div class="biodata-title">&mdash; Biodata for Marriage &mdash;</div>-->
-      <div class="name-line">Himanshu Goyal</div>
-      <div class="quote-line"> सम्मान, विश्वास, स्नेह—एतेषु मम जीवनदृष्टिः। &mdash; Respect, trust, and affection—these define my approach to life.</div>
     </div>
 
-    <!-- Photo top-right -->
-    <div class="photo-frame">
-      <div class="photo-placeholder">
-        <!--Your Photo-->
-        <!--<small>Passport size</small>-->
-         <img src="me.png" width="100" height="125"> 
+    <!-- 2. Photo (right) + 3. Name (bottom-left) -->
+    <div style="display: flex; align-items: flex-end; gap: 10px; margin-top: -60px;">
+      <div style="flex: 1;">
+        <div class="name-line" style="margin-top: -50px;">Himanshu Goyal</div>
+        <div class="quote-line"> सम्मान, विश्वास, स्नेह—एतेषु मम जीवनदृष्टिः। &mdash; Respect, trust, and affection—these define my approach to life.</div>
+      </div>
+      <div style="flex-shrink: 0; text-align: center;">
+        <div class="photo-frame" style="width: auto; height: auto; padding: 4px;">
+          <img src="me.png" style="display: block; max-height: 100px; width: auto; object-fit: contain;">
+        </div>
+        <a href="https://drive.google.com/drive/folders/1MIU0RvGod2jgBpAn-dZgHHN5PVe1x7bd?usp=sharing" target="_blank" style="display: inline-block; font-size: 9px; color: #800020; margin-top: 3px; text-decoration: none; font-weight: bold;">More Photos &#x2197;</a>
       </div>
     </div>
+
   </div>
 
   <div class="divider">&#9672;</div>
 
   <!-- ======== PERSONAL INFORMATION ======== -->
   <div class="section-header">Personal Information</div>
-  <table class="fields-table">
-    <tr>
-      <td class="field-label">Full Name</td><td class="field-colon">:</td>
-      <td class="field-value">Himanshu Goyal</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Date of Birth</td><td class="field-colon">:</td>
-      <td class="field-value">10 August 1995 (Age: 30)</td>
-    </tr>
-    <tr>
-      <td class="field-label">Time of Birth</td><td class="field-colon">:</td>
-      <td class="field-value">05:00 PM</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Place of Birth</td><td class="field-colon">:</td>
-      <td class="field-value">Meerut, U.P., India</td>
-    </tr>
-    <tr>
-      <td class="field-label">Height</td><td class="field-colon">:</td>
-      <td class="field-value">170 cm ( ~ 5' 7'')</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Weight</td><td class="field-colon">:</td>
-      <td class="field-value">XX kg</td>
-    </tr>
-    <tr>
-      <td class="field-label">Complexion</td><td class="field-colon">:</td>
-      <td class="field-value">Fair / Wheatish / Medium</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Blood Group</td><td class="field-colon">:</td>
-      <td class="field-value">A+ / B+ / O+ / AB+</td>
-    </tr>
-    <tr>
-      <td class="field-label">Marital Status</td><td class="field-colon">:</td>
-      <td class="field-value">Never Married</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Religion</td><td class="field-colon">:</td>
-      <td class="field-value">Hindu</td>
-    </tr>
-    <tr>
-      <td class="field-label">Caste</td><td class="field-colon">:</td>
-      <td class="field-value">Baniya</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Sub-Caste</td><td class="field-colon">:</td>
-      <td class="field-value">Your Sub-Caste</td>
-    </tr>
-    <tr>
-      <td class="field-label">Gotra</td><td class="field-colon">:</td>
-      <td class="field-value">Your Gotra</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Mother Tongue</td><td class="field-colon">:</td>
-      <td class="field-value">Hindi</td>
-    </tr>
-    <tr>
-      <td class="field-label">Languages Known</td><td class="field-colon">:</td>
-      <td class="field-value">Hindi, English</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Diet</td><td class="field-colon">:</td>
-      <td class="field-value">Eggetarian</td>
-    </tr>
-    <tr>
-      <td class="field-label">Smoke / Drink</td><td class="field-colon">:</td>
-      <td class="field-value">No / Occasionally</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Nationality</td><td class="field-colon">:</td>
-      <td class="field-value">Indian</td>
-    </tr>
-  </table>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Full Name</span><span class="fc">:</span><span class="fv">Himanshu Goyal</span></div>
+    <div class="field-item"><span class="fl">Date of Birth</span><span class="fc">:</span><span class="fv">10 August 1995, 05:00 PM (Age: 30)</span></div>
+    <!-- <div class="field-item"><span class="fl">Time of Birth</span><span class="fc">:</span><span class="fv">05:00 PM</span></div> -->
+    <div class="field-item"><span class="fl">Place of Birth</span><span class="fc">:</span><span class="fv">Meerut, U.P., India</span></div>
+    <div class="field-item"><span class="fl">Current Location</span><span class="fc">:</span><span class="fv">Menlo Park, CA, USA</span></div>
+    <div class="field-item"><span class="fl">Visa Status</span><span class="fc">:</span><span class="fv"> H1B1 (2031 expiry) </span></div>
+    <div class="field-item"><span class="fl">Height</span><span class="fc">:</span><span class="fv">171 cm ( ~ 5' 7'')</span></div>
+    <!-- <div class="field-item"><span class="fl">Weight</span><span class="fc">:</span><span class="fv">XX kg</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Complexion</span><span class="fc">:</span><span class="fv">Fair / Wheatish / Medium</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Blood Group</span><span class="fc">:</span><span class="fv">A+ / B+ / O+ / AB+</span></div> -->
+    <div class="field-item"><span class="fl">Marital Status</span><span class="fc">:</span><span class="fv">Never Married</span></div>
+    <div class="field-item"><span class="fl">Religion</span><span class="fc">:</span><span class="fv">Hindu</span></div>
+    <div class="field-item"><span class="fl">Caste</span><span class="fc">:</span><span class="fv">Vaishya (Baniya)</span></div>
+    <!-- <div class="field-item"><span class="fl">Sub-Caste</span><span class="fc">:</span><span class="fv">Your Sub-Caste</span></div> -->
+    <div class="field-item"><span class="fl">Gotra</span><span class="fc">:</span><span class="fv">Goyal</span></div>
+    <div class="field-item"><span class="fl">Mother Tongue</span><span class="fc">:</span><span class="fv">Hindi</span></div>
+    <div class="field-item"><span class="fl">Languages Known</span><span class="fc">:</span><span class="fv">Hindi, English</span></div>
+    <div class="field-item"><span class="fl">Diet</span><span class="fc">:</span><span class="fv">Eggetarian</span></div>
+    <!-- <div class="field-item"><span class="fl">Smoke / Drink</span><span class="fc">:</span><span class="fv">No / Occasionally</span></div> -->
+    <div class="field-item"><span class="fl">Nationality</span><span class="fc">:</span><span class="fv">Indian</span></div>
+  </div>
 
   <!-- ======== HOROSCOPE DETAILS ======== -->
   <!--<div class="section-header">Horoscope Details</div>-->
@@ -457,208 +424,109 @@
   <!--  </tr>-->
   <!--</table>-->
 
-  <!-- ======== EDUCATIONAL QUALIFICATION ======== -->
-  <div class="section-header">Educational Qualification</div>
-  <table class="fields-table">
-    <tr>
-      <td class="field-label">Highest Degree</td><td class="field-colon">:</td>
-      <td class="field-value">M.Tech / M.E.</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Specialization</td><td class="field-colon">:</td>
-      <td class="field-value">Computer Science / Engineering</td>
-    </tr>
-    <tr>
-      <td class="field-label">University</td><td class="field-colon">:</td>
-      <td class="field-value">University of Chicago</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Year of Passing</td><td class="field-colon">:</td>
-      <td class="field-value">YYYY</td>
-    </tr>
-    <tr>
-      <td class="field-label">Additional Qualif.</td><td class="field-colon">:</td>
-      <td class="field-value" colspan="4">Diploma, certification, or additional degree (if any)</td>
-    </tr>
-  </table>
+  <!-- ======== EDUCATION & CAREER ======== -->
+  <div class="section-header">Education &amp; Career</div>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Post-Graduation</span><span class="fc">:</span><span class="fv">M.S., CS, University of Chicago (2025)</span></div>
+    <div class="field-item"><span class="fl">Graduation</span><span class="fc">:</span><span class="fv">B.Tech, TT, IIT Delhi  (2017)</span></div>
+    <div class="field-item"><span class="fl">Other Qualification</span><span class="fc">:</span><span class="fv">CFA Level 2 Cleared</span></div>
+    <div class="field-item"><span class="fl">Occupation</span><span class="fc">:</span><span class="fv">Machine Learning Engineer (MLE)</span></div>
+    <div class="field-item"><span class="fl">Company</span><span class="fc">:</span><span class="fv">Meta (Facebook)</span></div>
+    <!-- <div class="field-item"><span class="fl">Designation</span><span class="fc">:</span><span class="fv">Machine Learning Engineer</span></div> -->
+    <div class="field-item"><span class="fl">Sector</span><span class="fc">:</span><span class="fv">Private / MNC</span></div>
+    <div class="field-item"><span class="fl">Work Location</span><span class="fc">:</span><span class="fv">Menlo Park, California, USA</span></div>
+    <div class="field-item"><span class="fl">Annual Income</span><span class="fc">:</span><span class="fv">$300K&ndash;500K USD</span></div>
+    <div class="field-item full"><span class="fl">Work Experience</span><span class="fc">:</span><span class="fv">8 years as MLE with multiple patents and publications</span></div>
 
-  <!-- ======== PROFESSIONAL DETAILS ======== -->
-  <div class="section-header">Professional Details</div>
-  <table class="fields-table">
-    <tr>
-      <td class="field-label">Occupation</td><td class="field-colon">:</td>
-      <td class="field-value">Machine Learning Engineer</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Company</td><td class="field-colon">:</td>
-      <td class="field-value">Meta (Facebook)</td>
-    </tr>
-    <tr>
-      <td class="field-label">Designation</td><td class="field-colon">:</td>
-      <td class="field-value">Machine Learning Engineer</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Sector</td><td class="field-colon">:</td>
-      <td class="field-value">Private / MNC</td>
-    </tr>
-    <tr>
-      <td class="field-label">Work Location</td><td class="field-colon">:</td>
-      <td class="field-value">Mountain View, California, USA</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Annual Income</td><td class="field-colon">:</td>
-      <td class="field-value">$300K&ndash;500K USD</td>
-    </tr>
-    <tr>
-      <td class="field-label">Work Experience</td><td class="field-colon">:</td>
-      <td class="field-value" colspan="4">X years in the field</td>
-    </tr>
-  </table>
+   <div class="field-item full"><span class="fl">Past Companies</span><span class="fc">:</span><span class="fv">CitiBank, TwoPaksh (My Own startup), Johnsons Control Int'l, </span></div>
+   </div>
 
   <!-- ======== FAMILY DETAILS ======== -->
   <div class="section-header">Family Details</div>
-  <table class="fields-table">
-    <tr>
-      <td class="field-label">Father's Name</td><td class="field-colon">:</td>
-      <td class="field-value">Shri Dharmendra Goyal</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Father's Occupation</td><td class="field-colon">:</td>
-      <td class="field-value">Businessman</td>
-    </tr>
-    <tr>
-      <td class="field-label">Mother's Name</td><td class="field-colon">:</td>
-      <td class="field-value">Smt. Savita Goyal</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Mother's Occupation</td><td class="field-colon">:</td>
-      <td class="field-value">Teacher</td>
-    </tr>
-    <tr>
-      <td class="field-label">Grandfather</td><td class="field-colon">:</td>
-      <td class="field-value">Late/Shri Full Name</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Grandmother</td><td class="field-colon">:</td>
-      <td class="field-value">Late/Smt. Full Name</td>
-    </tr>
-    <tr>
-      <td class="field-label">Brother(s)</td><td class="field-colon">:</td>
-      <td class="field-value">X Elder, X Younger</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Sister(s)</td><td class="field-colon">:</td>
-      <td class="field-value">X Elder, X Younger</td>
-    </tr>
-    <tr>
-      <td class="field-label">Mama's Name</td><td class="field-colon">:</td>
-      <td class="field-value">Shri Full Name, City</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Family Type</td><td class="field-colon">:</td>
-      <td class="field-value">Joint / Nuclear Family</td>
-    </tr>
-    <tr>
-      <td class="field-label">Family Status</td><td class="field-colon">:</td>
-      <td class="field-value">Middle / Upper Middle</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Family Values</td><td class="field-colon">:</td>
-      <td class="field-value">Traditional / Moderate</td>
-    </tr>
-    <tr>
-      <td class="field-label">Native Place</td><td class="field-colon">:</td>
-      <td class="field-value">City, District, State</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Property</td><td class="field-colon">:</td>
-      <td class="field-value">Own House / Flat / Land</td>
-    </tr>
-    <tr>
-      <td class="field-label">Residential Address</td><td class="field-colon">:</td>
-      <td class="field-value" colspan="4">House No., Street, Area, City, State &mdash; PIN Code</td>
-    </tr>
-  </table>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Father's Name</span><span class="fc">:</span><span class="fv">Shri Dharmendra Goyal</span></div>
+    <div class="field-item"><span class="fl">Father's Occupation</span><span class="fc">:</span><span class="fv">Businessman & Farmer (Part-time)</span></div>
+    <div class="field-item"><span class="fl">Mother's Name</span><span class="fc">:</span><span class="fv">Smt. Savita Goyal</span></div>
+    <div class="field-item"><span class="fl">Mother's Occupation</span><span class="fc">:</span><span class="fv">Teacher (Meerut)</span></div>
+    <!-- <div class="field-item"><span class="fl">Grandfather</span><span class="fc">:</span><span class="fv">Late/Shri Full Name</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Grandmother</span><span class="fc">:</span><span class="fv">Late/Smt. Full Name</span></div> -->
+    <div class="field-item"><span class="fl">Sibling(s)</span><span class="fc">:</span><span class="fv">2 Elder Brothers (Married, 1 kid Each) </span></div>
+    <div class="field-item"><span class="fl">Sibling(s) Occupation</span><span class="fc">:</span><span class="fv">KV Teacher (Hyd),  Engineer (Gurgaon) </span></div>
 
-  <!-- ======== HOBBIES & INTERESTS ======== -->
-  <div class="section-header">Hobbies &amp; Interests</div>
-  <div class="hobbies-grid">
-    <div class="hobby-item">Reading</div>
-    <div class="hobby-item">Cooking</div>
-    <div class="hobby-item">Traveling</div>
-    <div class="hobby-item">Music</div>
-    <div class="hobby-item">Yoga / Fitness</div>
-    <div class="hobby-item">Photography</div>
-    <div class="hobby-item">Painting</div>
-    <div class="hobby-item">Sports</div>
-    <div class="hobby-item">Gardening</div>
-    <div class="hobby-item">Movies</div>
-    <div class="hobby-item">Spirituality</div>
-    <div class="hobby-item">Social Work</div>
+    <!-- <div class="field-item"><span class="fl">Sister(s)</span><span class="fc">:</span><span class="fv">X Elder, X Younger</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Mama's Name</span><span class="fc">:</span><span class="fv">Shri Full Name, City</span></div> -->
+    <div class="field-item"><span class="fl">Family Type</span><span class="fc">:</span><span class="fv">Nuclear Family (Joint After Brothers Marriage) </span></div>
+    <div class="field-item"><span class="fl">Family Status</span><span class="fc">:</span><span class="fv">Middle Class (Modest)</span></div>
+    <div class="field-item"><span class="fl">Family Values</span><span class="fc">:</span><span class="fv">Traditional</span></div>
+    <div class="field-item"><span class="fl">Native Place</span><span class="fc">:</span><span class="fv">Meerut, UP</span></div>
+    <div class="field-item"><span class="fl">Property</span><span class="fc">:</span><span class="fv">Own House</span></div>
+    <div class="field-item full"><span class="fl">Residential Address</span><span class="fc">:</span><span class="fv">C4, Gol-Mandir Campus, Shastri Nagar, Meerut, UP - 250001</span></div>
   </div>
+
+
 
   <!-- ======== PARTNER PREFERENCES ======== -->
   <div class="section-header">Partner Preferences (Expectations)</div>
-  <table class="fields-table">
-    <tr>
-      <td class="field-label">Preferred Age</td><td class="field-colon">:</td>
-      <td class="field-value">XX to XX years</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Preferred Height</td><td class="field-colon">:</td>
-      <td class="field-value">X'X'' to X'X''</td>
-    </tr>
-    <tr>
-      <td class="field-label">Education</td><td class="field-colon">:</td>
-      <td class="field-value">Minimum qualification</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Occupation</td><td class="field-colon">:</td>
-      <td class="field-value">Preferred or "Any"</td>
-    </tr>
-    <tr>
-      <td class="field-label">Caste Preference</td><td class="field-colon">:</td>
-      <td class="field-value">Same / Caste No Bar</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Manglik Pref.</td><td class="field-colon">:</td>
-      <td class="field-value">Matching / No pref.</td>
-    </tr>
-    <tr>
-      <td class="field-label">Location</td><td class="field-colon">:</td>
-      <td class="field-value">Same city / Anywhere</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Family Background</td><td class="field-colon">:</td>
-      <td class="field-value">Expected values / type</td>
-    </tr>
-    <tr>
-      <td class="field-label">Other Expectations</td><td class="field-colon">:</td>
-      <td class="field-value" colspan="4">Brief description of what you are looking for in a life partner</td>
-    </tr>
-  </table>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Preferred Age</span><span class="fc">:</span><span class="fv">24 to 31 years</span></div>
+    <div class="field-item"><span class="fl">Preferred Height</span><span class="fc">:</span><span class="fv">5'0'' to 5'9''</span></div>
+    <div class="field-item"><span class="fl">Education</span><span class="fc">:</span><span class="fv"> Graduate</span></div>
+    <div class="field-item"><span class="fl">Occupation</span><span class="fc">:</span><span class="fv">"Any"</span></div>
+    <div class="field-item"><span class="fl">Caste Preference</span><span class="fc">:</span><span class="fv">Caste No Bar</span></div>
+    <div class="field-item"><span class="fl">Manglik Pref.</span><span class="fc">:</span><span class="fv">Matching (My Parents Wants this)</span></div>
+    <div class="field-item"><span class="fl">Location</span><span class="fc">:</span><span class="fv"> USA / Willing to Relocate </span></div>
+    <div class="field-item"><span class="fl">Family Background</span><span class="fc">:</span><span class="fv"> High Moral & Ethical Values </span></div>
+    <div class="field-item full"><span class="fl">Other Expectations</span><span class="fc">:</span><span class="fv"> Read Personal Note</span></div>
+  </div>
 
   <div class="divider">&#9672;</div>
 
   <!-- ======== CONTACT INFORMATION ======== -->
   <div class="section-header">Contact Information</div>
-  <table class="fields-table">
-    <tr>
-      <td class="field-label">Contact Person</td><td class="field-colon">:</td>
-      <td class="field-value">Himanshu Goyal</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Relationship</td><td class="field-colon">:</td>
-      <td class="field-value">Self</td>
-    </tr>
-    <tr>
-      <td class="field-label">Mobile Number</td><td class="field-colon">:</td>
-      <td class="field-value">+1 8826939156</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Alternate No.</td><td class="field-colon">:</td>
-      <td class="field-value">+1 XXXXX XXXXX</td>
-    </tr>
-    <tr>
-      <td class="field-label">WhatsApp</td><td class="field-colon">:</td>
-      <td class="field-value">+1 8826939156</td>
-      <td class="gap-col"></td>
-      <td class="field-label2">Email</td><td class="field-colon">:</td>
-      <td class="field-value">goyalhimanshu414@gmail.com</td>
-    </tr>
-    <tr>
-      <td class="field-label">Residential Address</td><td class="field-colon">:</td>
-      <td class="field-value" colspan="4">643 18th Avenue, Menlo Park, CA, USA</td>
-    </tr>
-  </table>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Contact Person</span><span class="fc">:</span><span class="fv">Himanshu Goyal</span></div>
+    <div class="field-item"><span class="fl">Relationship</span><span class="fc">:</span><span class="fv">Self</span></div>
+    <div class="field-item"><span class="fl">Mobile Number</span><span class="fc">:</span><span class="fv">+1 773-231-3457 (Prefer WA )</span></div>
+    <!-- <div class="field-item"><span class="fl">Prefered Medium</span><span class="fc">:</span><span class="fv">WhatsApp</span></div> -->
+    <!-- <div class="field-item"><span class="fl">WhatsApp</span><span class="fc">:</span><span class="fv">+1 8826939156</span></div> -->
+    <div class="field-item"><span class="fl">Email</span><span class="fc">:</span><span class="fv">goyalhimanshu414@gmail.com</span></div>
+    <div class="field-item full"><span class="fl">Residential Address</span><span class="fc">:</span><span class="fv">643 18th Avenue Menlo Park CA  USA</span></div>
+  </div>
+
+  <!-- ======== HOBBIES & INTERESTS ======== -->
+  <div class="section-header">Hobbies &amp; Interests</div>
+  <div class="hobbies-grid">
+    <div class="hobby-item">Gyming</div>
+    <div class="hobby-item">Badminton</div>
+    <div class="hobby-item">Running</div>
+    <!-- <div class="hobby-item">Music</div> -->
+    <!-- <div class="hobby-item">Yoga / Fitness</div> -->
+    <!-- <div class="hobby-item">Photography</div> -->
+    <!-- <div class="hobby-item">Painting</div> -->
+    <!-- <div class="hobby-item">Sports</div> -->
+    <div class="hobby-item">Gardening</div>
+    <div class="hobby-item">Movies</div>
+    <!-- <div class="hobby-item">Spirituality</div> -->
+    <!-- <div class="hobby-item">Social Work</div> -->
+  </div>
+
+  <!-- ======== A PERSONAL NOTE ======== -->
+  <div class="section-header">A Personal Note</div>
+  <div style="padding: 3px 8px; font-size: 10px; color: #3B1F0B; line-height: 1.5; font-style: italic;">
+ For me, an ideal partner is someone calm, composed, and well-mannered—emotionally supportive and understanding, while also driven in her own pursuits. I value traditional Indian family values and culture, and look forward to building a happy, grounded family together. I am empathetic, loving, and caring, with strong bonds with friends and family, and I enjoy life’s simple pleasures like evening tea, a walk in the park, or spending time with close ones. Professionally, I work in a highly demanding and focused environment, which I genuinely enjoy. Looking ahead, I hope we build a life together and share a home, growing as partners while supporting each other’s journeys; my role offers flexibility to transfer across U.S. offices at Meta, and while I’m currently based in Menlo Park, California, I’m open to settling in different cities or countries in the long term. </div>
 
   <!-- ======== FOOTER ======== -->
   <div class="footer">
     <div class="divider">&#9733;</div>
     <div class="footer-blessing">|| Shri Shubh Vivah ||</div>
     <div class="footer-text">May Lord Ganesha bless this sacred union with eternal happiness and prosperity.</div>
+    <div style="margin-top: 6px; font-size: 10px; color: #800020;">
+      <span style="font-weight: bold;">View Online:</span>
+      <a href="https://im-himanshu.github.io/Himanshu_BioData/" target="_blank" style="color: #800020; text-decoration: underline; margin-right: 8px;">im-himanshu.github.io/Himanshu_BioData</a>
+      <span id="copy-btn" onclick="navigator.clipboard.writeText('https://im-himanshu.github.io/Himanshu_BioData/').then(()=>{document.getElementById('copy-btn').textContent='Copied!'; setTimeout(()=>{document.getElementById('copy-btn').textContent='[Copy Link]'},2000)})" style="cursor: pointer; color: #C5961A; font-weight: bold;">[Copy Link]</span>
+      <span style="margin-left: 8px;">|</span>
+      <a href="https://drive.google.com/drive/folders/1MIU0RvGod2jgBpAn-dZgHHN5PVe1x7bd?usp=sharing" target="_blank" style="color: #800020; text-decoration: underline; font-weight: bold; margin-left: 8px;">More Photos</a>
+    </div>
     <div class="footer-shubh">~ Shubh Mangal ~</div>
     <div class="divider">&#9733;</div>
   </div>
