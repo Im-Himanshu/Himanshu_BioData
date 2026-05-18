@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Himanshu Goyal BioData</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='26' text-anchor='middle' font-size='28' fill='%23800020'%3Eॐ%3C/text%3E%3C/svg%3E">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lora', 'Georgia', serif;
+    background: #f5f0e8;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .biodata-page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #FFF8EC;
+    position: relative;
+    padding: 28px 32px 24px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  /* === TRIPLE DECORATIVE BORDER === */
+  .biodata-page::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 3px solid #800020;
+    border-radius: 10px;
+    pointer-events: none;
+  }
+  .biodata-page::after {
+    content: '';
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1.5px solid #C5961A;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+  .inner-border {
+    position: absolute;
+    top: 18px; left: 18px; right: 18px; bottom: 18px;
+    border: 0.5px dotted #800020;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  /* === CORNER ORNAMENTS === */
+  .corner {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    color: #C5961A;
+    font-size: 36px;
+    line-height: 1;
+  }
+  .corner-tl { top: 14px; left: 16px; }
+  .corner-tr { top: 14px; right: 16px; transform: scaleX(-1); }
+  .corner-bl { bottom: 14px; left: 16px; transform: scaleY(-1); }
+  .corner-br { bottom: 14px; right: 16px; transform: scale(-1,-1); }
+
+  /* === HEADER AREA === */
+  .header-row {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-left {
+    flex: 1;
+    text-align: center;
+    padding-right: 10px;
+  }
+
+  /* Small Ganesha */
+  .ganesha-icon {
+    width: 42px;
+    height: 40px;
+    border: 2px solid #C5961A;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F5E6C8, #FFF8EC);
+    margin-bottom: 2px;
+    font-size: 22px;
+    color: #800020;
+    font-weight: bold;
+    /* Replace content with a Ganesha image:
+       background-image: url('ganesha.png');
+       background-size: cover; */
+  }
+
+  .invocation {
+    font-size: 11px;
+    color: #800020;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .biodata-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #800020;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .name-line {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #800020;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 8px;
+    margin-top: 4px;
+  }
+
+  .quote-line {
+    font-size: 11px;
+    color: #A0522D;
+    font-style: italic;
+    text-align: left;
+    padding-left: 8px;
+    margin-top: 3px;
+  }
+
+  /* Photo frame (top-right) */
+  .photo-frame {
+    height: 135px;
+    border: 2.5px solid #800020;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF8EC;
+    flex-shrink: 0;
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    border: 1px solid #C5961A;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .photo-placeholder {
+    font-size: 12px;
+    color: #800020;
+    text-align: center;
+    font-weight: bold;
+    height: 100%;
+  }
+  .photo-placeholder small {
+    display: block;
+    font-size: 9px;
+    font-weight: normal;
+    margin-top: 3px;
+    color: #A0522D;
+    opacity: 0.6;
+  }
+
+  /* === DECORATIVE DIVIDER === */
+  .divider {
+    text-align: center;
+    margin: 4px 0;
+    color: #C5961A;
+    font-size: 11px;
+    letter-spacing: 6px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    display: inline-block;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C5961A, transparent);
+    vertical-align: middle;
+    margin: 0 8px;
+  }
+
+  /* === SECTION HEADER === */
+  .section-header {
+    background: linear-gradient(135deg, #800020, #6b001a);
+    color: #F5E6C8;
+    padding: 5px 14px;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  .section-header::before {
+    content: '\25C6';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #C5961A;
+    font-size: 7px;
+  }
+  .section-header::after {
+    content: '\25C6';
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #C5961A;
+    font-size: 7px;
+  }
+
+  /* === FIELD GRID (flex-wrap, each field independent) === */
+  .fields-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+  }
+  .field-item {
+    width: 50%;
+    padding: 2.5px 4px;
+    font-size: 10.5px;
+    line-height: 1.4;
+    display: flex;
+  }
+  .field-item.full {
+    width: 100%;
+  }
+  .field-item .fl {
+    font-weight: 700;
+    color: #800020;
+    white-space: nowrap;
+    min-width: 120px;
+  }
+  .field-item .fc {
+    color: #C5961A;
+    font-weight: bold;
+    margin: 0 4px;
+  }
+  .field-item .fv {
+    color: #3B1F0B;
+  }
+
+  /* === HOBBIES GRID === */
+  .hobbies-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2px 8px;
+    padding: 3px 8px;
+    font-size: 10.5px;
+    color: #3B1F0B;
+  }
+  .hobby-item::before {
+    content: '\25C7 ';
+    color: #C5961A;
+    font-size: 9px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    margin-top: 8px;
+    padding-top: 4px;
+  }
+  .footer-blessing {
+    font-size: 13px;
+    color: #800020;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .footer-text {
+    font-size: 10px;
+    color: #A0522D;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  .footer-shubh {
+    font-size: 10px;
+    color: #C5961A;
+    margin-top: 3px;
+    letter-spacing: 2px;
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: none; padding: 0; }
+    .biodata-page {
+      box-shadow: none;
+      width: 100%;
+      min-height: auto;
+      padding: 16px 22px 12px 22px;
+    }
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .section-header {
+      margin-top: 4px;
+      margin-bottom: 3px;
+      padding: 3px 14px;
+      font-size: 11px;
+    }
+    .field-item {
+      padding: 1.5px 4px;
+      font-size: 9.5px;
+    }
+    .divider { margin: 2px 0; }
+    .hobbies-grid { font-size: 9.5px; padding: 2px 8px; }
+    .footer { margin-top: 4px; padding-top: 2px; }
+    .name-line { font-size: 16px; }
+    .quote-line { font-size: 10px; }
+    .invocation { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="biodata-page">
+  <!-- Inner dotted border -->
+  <div class="inner-border"></div>
+
+  <!-- Corner ornaments -->
+  <div class="corner corner-tl">&#10048;</div>
+  <div class="corner corner-tr">&#10048;</div>
+  <div class="corner corner-bl">&#10048;</div>
+  <div class="corner corner-br">&#10048;</div>
+
+  <!-- ======== HEADER SECTION ======== -->
+  <div style="position: relative; z-index: 1; margin-top: 2px; margin-bottom: 4px;">
+
+    <!-- 1. Ganesha: centered on page -->
+    <div style="text-align: center; margin-bottom: 6px;">
+      <div class="ganesha-icon">
+         <img src="ganesha.png" width="36" height="36" onerror="this.style.display='none'; this.parentElement.innerHTML='&#x0950;';">
+      </div>
+      <div class="invocation">|| Shri Ganeshaya Namah ||</div>
+    </div>
+
+    <!-- 2. Photo (right) + 3. Name (bottom-left) -->
+    <div style="display: flex; align-items: flex-end; gap: 10px; margin-top: -60px;">
+      <div style="flex: 1;">
+        <div class="name-line" style="margin-top: -50px;">Himanshu Goyal</div>
+        <div class="quote-line"> सम्मान, विश्वास, स्नेह—एतेषु मम जीवनदृष्टिः। &mdash; Respect, trust, and affection—these define my approach to life.</div>
+      </div>
+      <div style="flex-shrink: 0; text-align: center;">
+        <div class="photo-frame" style="width: auto; height: auto; padding: 4px;">
+          <img src="me.png" style="display: block; max-height: 100px; width: auto; object-fit: contain;">
+        </div>
+        <a href="https://drive.google.com/drive/folders/1MIU0RvGod2jgBpAn-dZgHHN5PVe1x7bd?usp=sharing" target="_blank" style="display: inline-block; font-size: 9px; color: #800020; margin-top: 3px; text-decoration: none; font-weight: bold;">More Photos &#x2197;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider">&#9672;</div>
+
+  <!-- ======== PERSONAL INFORMATION ======== -->
+  <div class="section-header">Personal Information</div>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Full Name</span><span class="fc">:</span><span class="fv">Himanshu Goyal</span></div>
+    <div class="field-item"><span class="fl">Date of Birth</span><span class="fc">:</span><span class="fv">10 August 1995, 05:00 PM (Age: 30)</span></div>
+    <!-- <div class="field-item"><span class="fl">Time of Birth</span><span class="fc">:</span><span class="fv">05:00 PM</span></div> -->
+    <div class="field-item"><span class="fl">Place of Birth</span><span class="fc">:</span><span class="fv">Meerut, U.P., India</span></div>
+    <div class="field-item"><span class="fl">Current Location</span><span class="fc">:</span><span class="fv">Menlo Park, CA, USA</span></div>
+    <div class="field-item"><span class="fl">Visa Status</span><span class="fc">:</span><span class="fv"> H1B1 (2031 expiry) </span></div>
+    <div class="field-item"><span class="fl">Height</span><span class="fc">:</span><span class="fv">171 cm ( ~ 5' 7'')</span></div>
+    <!-- <div class="field-item"><span class="fl">Weight</span><span class="fc">:</span><span class="fv">XX kg</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Complexion</span><span class="fc">:</span><span class="fv">Fair / Wheatish / Medium</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Blood Group</span><span class="fc">:</span><span class="fv">A+ / B+ / O+ / AB+</span></div> -->
+    <div class="field-item"><span class="fl">Marital Status</span><span class="fc">:</span><span class="fv">Never Married</span></div>
+    <div class="field-item"><span class="fl">Religion</span><span class="fc">:</span><span class="fv">Hindu</span></div>
+    <div class="field-item"><span class="fl">Caste</span><span class="fc">:</span><span class="fv">Vaishya (Baniya)</span></div>
+    <!-- <div class="field-item"><span class="fl">Sub-Caste</span><span class="fc">:</span><span class="fv">Your Sub-Caste</span></div> -->
+    <div class="field-item"><span class="fl">Gotra</span><span class="fc">:</span><span class="fv">Goyal</span></div>
+    <div class="field-item"><span class="fl">Mother Tongue</span><span class="fc">:</span><span class="fv">Hindi</span></div>
+    <div class="field-item"><span class="fl">Languages Known</span><span class="fc">:</span><span class="fv">Hindi, English</span></div>
+    <div class="field-item"><span class="fl">Diet</span><span class="fc">:</span><span class="fv">Eggetarian</span></div>
+    <!-- <div class="field-item"><span class="fl">Smoke / Drink</span><span class="fc">:</span><span class="fv">No / Occasionally</span></div> -->
+    <div class="field-item"><span class="fl">Nationality</span><span class="fc">:</span><span class="fv">Indian</span></div>
+  </div>
+
+  <!-- ======== HOROSCOPE DETAILS ======== -->
+  <!--<div class="section-header">Horoscope Details</div>-->
+  <!--<table class="fields-table">-->
+  <!--  <tr>-->
+  <!--    <td class="field-label">Rashi (Moon Sign)</td><td class="field-colon">:</td>-->
+  <!--    <td class="field-value">Mesh / Vrishabh / etc.</td>-->
+  <!--    <td class="gap-col"></td>-->
+  <!--    <td class="field-label2">Nakshatra</td><td class="field-colon">:</td>-->
+  <!--    <td class="field-value">Ashwini / Bharani / etc.</td>-->
+  <!--  </tr>-->
+  <!--  <tr>-->
+  <!--    <td class="field-label">Charan (Pada)</td><td class="field-colon">:</td>-->
+  <!--    <td class="field-value">1st / 2nd / 3rd / 4th</td>-->
+  <!--    <td class="gap-col"></td>-->
+  <!--    <td class="field-label2">Manglik Status</td><td class="field-colon">:</td>-->
+  <!--    <td class="field-value">Manglik / Non-Manglik</td>-->
+  <!--  </tr>-->
+  <!--  <tr>-->
+  <!--    <td class="field-label">Gan</td><td class="field-colon">:</td>-->
+  <!--    <td class="field-value">Dev / Manushya / Rakshas</td>-->
+  <!--    <td class="gap-col"></td>-->
+  <!--    <td class="field-label2">Nadi</td><td class="field-colon">:</td>-->
+  <!--    <td class="field-value">Adi / Madhya / Antya</td>-->
+  <!--  </tr>-->
+  <!--</table>-->
+
+  <!-- ======== EDUCATION & CAREER ======== -->
+  <div class="section-header">Education &amp; Career</div>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Post-Graduation</span><span class="fc">:</span><span class="fv">M.S., CS, University of Chicago (2025)</span></div>
+    <div class="field-item"><span class="fl">Graduation</span><span class="fc">:</span><span class="fv">B.Tech, TT, IIT Delhi  (2017)</span></div>
+    <div class="field-item"><span class="fl">Other Qualification</span><span class="fc">:</span><span class="fv">CFA Level 2 Cleared</span></div>
+    <div class="field-item"><span class="fl">Occupation</span><span class="fc">:</span><span class="fv">Machine Learning Engineer (MLE)</span></div>
+    <div class="field-item"><span class="fl">Company</span><span class="fc">:</span><span class="fv">Meta (Facebook)</span></div>
+    <!-- <div class="field-item"><span class="fl">Designation</span><span class="fc">:</span><span class="fv">Machine Learning Engineer</span></div> -->
+    <div class="field-item"><span class="fl">Sector</span><span class="fc">:</span><span class="fv">Private / MNC</span></div>
+    <div class="field-item"><span class="fl">Work Location</span><span class="fc">:</span><span class="fv">Menlo Park, California, USA</span></div>
+    <div class="field-item"><span class="fl">Annual Income</span><span class="fc">:</span><span class="fv">$300K&ndash;500K USD</span></div>
+    <div class="field-item full"><span class="fl">Work Experience</span><span class="fc">:</span><span class="fv">8 years as MLE with multiple patents and publications</span></div>
+
+   <div class="field-item full"><span class="fl">Past Companies</span><span class="fc">:</span><span class="fv">CitiBank, TwoPaksh (My Own startup), Johnsons Control Int'l, </span></div>
+   </div>
+
+  <!-- ======== FAMILY DETAILS ======== -->
+  <div class="section-header">Family Details</div>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Father's Name</span><span class="fc">:</span><span class="fv">Shri Dharmendra Goyal</span></div>
+    <div class="field-item"><span class="fl">Father's Occupation</span><span class="fc">:</span><span class="fv">Businessman & Farmer (Part-time)</span></div>
+    <div class="field-item"><span class="fl">Mother's Name</span><span class="fc">:</span><span class="fv">Smt. Savita Goyal</span></div>
+    <div class="field-item"><span class="fl">Mother's Occupation</span><span class="fc">:</span><span class="fv">Teacher (Meerut)</span></div>
+    <!-- <div class="field-item"><span class="fl">Grandfather</span><span class="fc">:</span><span class="fv">Late/Shri Full Name</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Grandmother</span><span class="fc">:</span><span class="fv">Late/Smt. Full Name</span></div> -->
+    <div class="field-item"><span class="fl">Sibling(s)</span><span class="fc">:</span><span class="fv">2 Elder Brothers (Married, 1 kid Each) </span></div>
+    <div class="field-item"><span class="fl">Sibling(s) Occupation</span><span class="fc">:</span><span class="fv">KV Teacher (Hyd),  Engineer (Gurgaon) </span></div>
+
+    <!-- <div class="field-item"><span class="fl">Sister(s)</span><span class="fc">:</span><span class="fv">X Elder, X Younger</span></div> -->
+    <!-- <div class="field-item"><span class="fl">Mama's Name</span><span class="fc">:</span><span class="fv">Shri Full Name, City</span></div> -->
+    <div class="field-item"><span class="fl">Family Type</span><span class="fc">:</span><span class="fv">Nuclear Family (Joint After Brothers Marriage) </span></div>
+    <div class="field-item"><span class="fl">Family Status</span><span class="fc">:</span><span class="fv">Middle Class (Modest)</span></div>
+    <div class="field-item"><span class="fl">Family Values</span><span class="fc">:</span><span class="fv">Traditional</span></div>
+    <div class="field-item"><span class="fl">Native Place</span><span class="fc">:</span><span class="fv">Meerut, UP</span></div>
+    <div class="field-item"><span class="fl">Property</span><span class="fc">:</span><span class="fv">Own House</span></div>
+    <div class="field-item full"><span class="fl">Residential Address</span><span class="fc">:</span><span class="fv">C4, Gol-Mandir Campus, Shastri Nagar, Meerut, UP - 250001</span></div>
+  </div>
+
+
+
+  <!-- ======== PARTNER PREFERENCES ======== -->
+  <div class="section-header">Partner Preferences (Expectations)</div>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Preferred Age</span><span class="fc">:</span><span class="fv">24 to 31 years</span></div>
+    <div class="field-item"><span class="fl">Preferred Height</span><span class="fc">:</span><span class="fv">5'0'' to 5'9''</span></div>
+    <div class="field-item"><span class="fl">Education</span><span class="fc">:</span><span class="fv"> Graduate</span></div>
+    <div class="field-item"><span class="fl">Occupation</span><span class="fc">:</span><span class="fv">"Any"</span></div>
+    <div class="field-item"><span class="fl">Caste Preference</span><span class="fc">:</span><span class="fv">Caste No Bar</span></div>
+    <div class="field-item"><span class="fl">Manglik Pref.</span><span class="fc">:</span><span class="fv">Matching (My Parents Wants this)</span></div>
+    <div class="field-item"><span class="fl">Location</span><span class="fc">:</span><span class="fv"> USA / Willing to Relocate </span></div>
+    <div class="field-item"><span class="fl">Family Background</span><span class="fc">:</span><span class="fv"> High Moral & Ethical Values </span></div>
+    <div class="field-item full"><span class="fl">Other Expectations</span><span class="fc">:</span><span class="fv"> Read Personal Note</span></div>
+  </div>
+
+  <div class="divider">&#9672;</div>
+
+  <!-- ======== CONTACT INFORMATION ======== -->
+  <div class="section-header">Contact Information</div>
+  <div class="fields-grid">
+    <div class="field-item"><span class="fl">Contact Person</span><span class="fc">:</span><span class="fv">Himanshu Goyal</span></div>
+    <div class="field-item"><span class="fl">Relationship</span><span class="fc">:</span><span class="fv">Self</span></div>
+    <div class="field-item"><span class="fl">Mobile Number</span><span class="fc">:</span><span class="fv">+1 773-231-3457 (Prefer WA )</span></div>
+    <!-- <div class="field-item"><span class="fl">Prefered Medium</span><span class="fc">:</span><span class="fv">WhatsApp</span></div> -->
+    <!-- <div class="field-item"><span class="fl">WhatsApp</span><span class="fc">:</span><span class="fv">+1 8826939156</span></div> -->
+    <div class="field-item"><span class="fl">Email</span><span class="fc">:</span><span class="fv">goyalhimanshu414@gmail.com</span></div>
+    <div class="field-item full"><span class="fl">Residential Address</span><span class="fc">:</span><span class="fv">643 18th Avenue Menlo Park CA  USA</span></div>
+  </div>
+
+  <!-- ======== HOBBIES & INTERESTS ======== -->
+  <div class="section-header">Hobbies &amp; Interests</div>
+  <div class="hobbies-grid">
+    <div class="hobby-item">Gyming</div>
+    <div class="hobby-item">Badminton</div>
+    <div class="hobby-item">Running</div>
+    <!-- <div class="hobby-item">Music</div> -->
+    <!-- <div class="hobby-item">Yoga / Fitness</div> -->
+    <!-- <div class="hobby-item">Photography</div> -->
+    <!-- <div class="hobby-item">Painting</div> -->
+    <!-- <div class="hobby-item">Sports</div> -->
+    <div class="hobby-item">Gardening</div>
+    <div class="hobby-item">Movies</div>
+    <!-- <div class="hobby-item">Spirituality</div> -->
+    <div class="hobby-item">Surfing</div>
+  </div>
+
+  <!-- ======== A PERSONAL NOTE ======== -->
+  <div class="section-header">A Personal Note</div>
+  <div style="padding: 3px 8px; font-size: 10px; color: #3B1F0B; line-height: 1.5; font-style: italic;">
+ For me, an ideal partner is someone calm, composed, and well-mannered—emotionally supportive and understanding, while also driven in her own pursuits. I value traditional Indian family values and culture, and look forward to building a happy, grounded family together. I am empathetic, loving, and caring, with strong bonds with friends and family, and I enjoy life’s simple pleasures like evening tea, a walk in the park, or spending time with close ones. Professionally, I work in a highly demanding and focused environment, which I genuinely enjoy. Looking ahead, I hope we build a life together and share a home, growing as partners while supporting each other’s journeys; my role offers flexibility to transfer across U.S. offices at Meta, and while I’m currently based in Menlo Park, California, I’m open to settling in different cities or countries in the long term. </div>
+
+  <!-- ======== FOOTER ======== -->
+  <div class="footer">
+    <div class="divider">&#9733;</div>
+    <div class="footer-blessing">|| Shri Shubh Vivah ||</div>
+    <div class="footer-text">May Lord Ganesha bless this sacred union with eternal happiness and prosperity.</div>
+    <div style="margin-top: 6px; font-size: 10px; color: #800020;">
+      <span style="font-weight: bold;">View Online:</span>
+      <a href="https://im-himanshu.github.io/Himanshu_BioData/" target="_blank" style="color: #800020; text-decoration: underline; margin-right: 8px;">im-himanshu.github.io/Himanshu_BioData</a>
+      <span id="copy-btn" onclick="navigator.clipboard.writeText('https://im-himanshu.github.io/Himanshu_BioData/').then(()=>{document.getElementById('copy-btn').textContent='Copied!'; setTimeout(()=>{document.getElementById('copy-btn').textContent='[Copy Link]'},2000)})" style="cursor: pointer; color: #C5961A; font-weight: bold;">[Copy Link]</span>
+      <span style="margin-left: 8px;">|</span>
+      <a href="https://drive.google.com/drive/folders/1MIU0RvGod2jgBpAn-dZgHHN5PVe1x7bd?usp=sharing" target="_blank" style="color: #800020; text-decoration: underline; font-weight: bold; margin-left: 8px;">More Photos</a>
+      <span style="margin-left: 8px;">|</span>
+      <a href="https://www.instagram.com/himanshu_goyal_" target="_blank" style="text-decoration: none; margin-left: 8px; vertical-align: middle;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="12" height="12" style="vertical-align: middle;"><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FFDC80"/><stop offset="25%" stop-color="#F77737"/><stop offset="50%" stop-color="#E1306C"/><stop offset="75%" stop-color="#C13584"/><stop offset="100%" stop-color="#833AB4"/></linearGradient><path fill="url(#ig)" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a> <a href="https://www.instagram.com/himanshu_goyal_" target="_blank" style="color: #800020; text-decoration: underline; font-size: 10px; vertical-align: middle;">@himanshu_goyal_</a>
+    </div>
+    <div class="footer-shubh">~ Shubh Mangal ~</div>
+    <div class="divider">&#9733;</div>
+  </div>
+</div>
+
+</body>
+</html>
